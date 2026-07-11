@@ -76,5 +76,6 @@ Conclusion: `通过`
 
 - Smoke test status: `通过`
 - Publish gate: `允许进入发布准备`
-- 实际 GitHub 发布：`未执行`
-- 原因：`gh` 读取 `C:\Users\49337\AppData\Roaming\GitHub CLI\config.yml` 时返回 Access is denied，本次不满足“环境允许且无需人工确认”的条件
+- 实际 GitHub 发布：`已发布`
+- 发布仓库：`https://github.com/ReiSei0824/agent-handoff-packager`
+- 备注：本机 `git push` 遇到 TLS 握手问题，本次通过 `gh api` 完成文件发布
