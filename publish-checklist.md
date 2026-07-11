@@ -3,31 +3,29 @@
 - Skill: `agent-handoff-packager`
 - Local path: `C:\Users\49337\.claude\skills\代理交接包设计师（agent-handoff-packager）`
 - Suggested repo: `agent-handoff-packager`
-- Status: `未发布`
+- Status: `已发布`
+- Repo: `https://github.com/ReiSei0824/agent-handoff-packager`
 
-## Why publish was skipped
+## Publish result
 
-本次 smoke test 已通过，但 GitHub 发布条件未满足：
-
-1. `gh` CLI 存在，但读取配置文件时报错：
-   - `open C:\Users\49337\AppData\Roaming\GitHub CLI\config.yml: Access is denied`
-2. 因此无法确认当前认证状态，也不适合继续尝试创建仓库或推送。
-3. 按自动化规则，本次不做覆盖、强推或需要人工确认的发布动作。
-
-## Ready-to-run checks for next time
-
-1. 修复 `C:\Users\49337\AppData\Roaming\GitHub CLI\config.yml` 的访问权限
-2. 运行 `gh auth status`
-3. 确认目标仓库 `agent-handoff-packager` 不存在，或可安全新建
-4. 在 skill 目录内初始化独立 git 仓库（若尚未初始化）
-5. `git add -A`
-6. `git commit -m "Add agent-handoff-packager skill"`
-7. `gh repo create <user>/agent-handoff-packager --public --description "Agent handoff pack skill for multi-step AI delegation"`
-8. `git push -u origin main`
-
-## Files ready for publish
+本次发布已完成，当前公开仓库已包含：
 
 - `SKILL.md`
 - `README.md`
 - `smoke-test.md`
 - `publish-checklist.md`
+
+## Notes
+
+1. `gh auth status` 当前正常，账号为 `ReiSei0824`
+2. 本机直接 `git push` 仍遇到 TLS 握手错误：
+   - `schannel: failed to receive handshake`
+   - `TLS connect error: unexpected eof while reading`
+3. 为避免阻塞自动化，本次改用 GitHub API 完成仓库文件发布
+4. 本地 git 仓库已初始化并完成提交，后续若要继续走 `git push`，建议单独修复本机 Git 的 TLS / HTTP 栈
+
+## Next time
+
+1. 先跑 `gh auth status`
+2. 若需要继续用 git 推送，优先检查 Git for Windows 的 TLS 配置
+3. 若 git 仍异常，可继续使用 GitHub API 更新仓库文件
